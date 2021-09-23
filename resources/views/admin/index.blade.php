@@ -219,11 +219,37 @@
                     </div>
                 </div>
             </header>
+
             <!-- HEADER DESKTOP-->
-        @yield('content');
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- DATA TABLE -->
+                                @if(Session::has('success'))
+                                <div class="alert alert-success">
+                                    <strong>Success!</strong> {{Session::get('success')}}
+                                </div>
+                                @endif 
+                                @if(Session::has('error'))
+                                <div class="alert alert-danger">
+                                    <strong>Error!</strong> {{Session::get('error')}}
+                                </div> 
+                                @endif 
+                                <div class="table-responsive table-responsive-data2">
+                                    @yield('content');
+                                </div>
+                                <!-- END DATA TABLE -->
+            
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        
         </div>
     </div>
-
     <!-- Jquery JS-->
     
     <script src="{{ asset('/viewAdmin/vendor/jquery-3.2.1.min.js')}}"></script>
@@ -248,6 +274,7 @@
 
     <!-- Main JS-->
     <script src="{{ asset('/viewAdmin/js/main.js')}}"></script>
+    @yield('alertDelete');
 
 </body>
 

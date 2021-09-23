@@ -18,5 +18,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/edituser','AdminController@editUser')->name('admin.edituser');
     Route::get('/listbook','AdminController@listBook')->name('admin.listbook');
     Route::get('/editbook/{id}','AdminController@editBook')->name('admin.editbook');
+    Route::PUT('/updatebook/{id}','BookController@updateBook')->name('admin.updatebook');
     Route::get('/addbook','AdminController@addBook')->name('admin.addbook');
+    Route::DELETE('/deletebook/{id}','AdminController@deleteBook')->name('admin.deletebook');
 });
