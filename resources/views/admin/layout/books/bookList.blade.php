@@ -28,10 +28,10 @@
             <td>{{$book->authorBook}}</td>
             <td>{{$book->priceBook}}</td>      
             <td>
-                <span class="status--process">{{$book->timeCreate}}</span>
+                <span class="status--process">{{$book->created_at}}</span>
             </td>
             <td>
-                <span class="status--process">{{$book->timeUpdate}}</span>
+                <span class="status--process">{{$book->updated_at}}</span>
             </td>
             <td>
                 <div class="table-data-feature">
@@ -57,15 +57,4 @@
 <!-- END MAIN CONTENT-->
 <!-- END PAGE CONTAINER-->
 @stop();
-@section('alertDelete')
-<Script>
-    $('.btnDelete').click(function(ev){
-        ev.preventDefault();
-        var _href= $(this).attr('href');
-        $('form#formDelete').attr('action',_href);
-        if(confirm('Do you want delete?')){
-            $('form#formDelete').submit();
-        }
-    })
-</Script>
-@stop()
+

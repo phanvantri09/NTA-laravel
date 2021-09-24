@@ -7,13 +7,17 @@
         <strong>Basic Form</strong> Elements
     </div>
     <div class="card-body card-block">
-        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <form action="{{route('admin.add')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+           @csrf @method('PUT')
             <div class="row form-group">
                 <div class="col col-md-3">
                     <label for="text-input" class=" form-control-label">Name Book</label>
                 </div>
                 <div class="col-12 col-md-9">
                     <input type="text" id="text-input" name="nameBook" placeholder="Enter Name" class="form-control">
+                    @error('nameBook')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="row form-group">
@@ -21,7 +25,10 @@
                     <label for="email-input" class=" form-control-label">Amount Book</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    <input type="email" id="email-input" name="amountBook" placeholder="Enter Amount" class="form-control">
+                    <input type="text" id="email-input" name="amountBook" placeholder="Enter Amount" class="form-control">
+                    @error('amountBook')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="row form-group">
@@ -30,6 +37,9 @@
                 </div>
                 <div class="col-12 col-md-9">
                     <textarea name="infoBook" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                    @error('infoBook')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="row form-group">
@@ -51,6 +61,9 @@
                 </div>
                 <div class="col-12 col-md-9">
                     <input type="text" id="text-input" name="authorBook" placeholder="Enter Author" class="form-control">
+                    @error('authorBook')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="row form-group">
@@ -59,6 +72,9 @@
                 </div>
                 <div class="col-12 col-md-9">
                     <input type="text" id="text-input" name="priceBook" placeholder="Enter Price" class="form-control">
+                    @error('priceBook')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="row form-group">
@@ -67,17 +83,21 @@
                 </div>
                 <div class="col-12 col-md-9">
                     <input type="file" id="file-input" name="imgBook" class="form-control-file">
+                    @error('imgBook')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-dot-circle-o"></i> Submit
+                </button>
+                <button type="reset" class="btn btn-danger btn-sm">
+                    <i class="fa fa-ban"></i> Reset
+                </button>
             </div>
         </form>
     </div>
-    <div class="card-footer">
-        <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa fa-dot-circle-o"></i> Submit
-        </button>
-        <button type="reset" class="btn btn-danger btn-sm">
-            <i class="fa fa-ban"></i> Reset
-        </button>
-    </div>
+    
 </div>
 @stop();

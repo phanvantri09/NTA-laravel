@@ -274,8 +274,8 @@
 
     <!-- Main JS-->
     <script src="{{ asset('/viewAdmin/js/main.js')}}"></script>
-    @yield('alertDelete');
-
+    <script src="{{ asset('/viewAdmin/js/action.js')}}"></script>
+   
 </body>
 
 </html>

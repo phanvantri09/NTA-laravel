@@ -5,16 +5,21 @@
 <div class="card">
     <div class="card-header">
         <strong>Basic Form</strong> Elements
+
     </div>
     <div class="card-body card-block">
-        <form action="{{route('admin.updatebook',$id)}}" method="POST"  class="form-horizontal">
+        <form action="{{route('admin.updatebook',$id)}}" method="POST" role='form' class="form-horizontal">
             @csrf @method('PUT')
+            <input type="hidden" name="idBook" value="{{$id->id}}">
             <div class="row form-group">
                 <div class="col col-md-3">
                     <label for="text-input" class=" form-control-label">Name Book</label>
                 </div>
                 <div class="col-12 col-md-9">
                     <input type="text" id="text-input" value="{{$id->nameBook}}" name="nameBook" placeholder="Enter Name" class="form-control">
+                    @error('nameBook')
+                    <small class="help-block">{{$message}}</small>
+                    @enderror
                 </div>
             </div>
             <div class="row form-group">
@@ -23,6 +28,9 @@
                 </div>
                 <div class="col-12 col-md-9">
                     <input type="text" id="email-input" value="{{$id->amountBook}}" name="amountBook" placeholder="Enter Amount" class="form-control">
+                    @error('amountBook')
+                    <small class="help-block">{{$message}}</small>
+                    @enderror
                 </div>
             </div>
             <div class="row form-group">
@@ -31,6 +39,9 @@
                 </div>
                 <div class="col-12 col-md-9">
                     <textarea name="infoBook" id="textarea-input"  rows="9"  class="form-control">{{$id->infoBook}}</textarea>
+                    @error('infoBook')
+                    <small class="help-block">{{$message}}</small>
+                    @enderror 
                 </div>
             </div>
             <div class="row form-group">
@@ -53,6 +64,9 @@
                 </div>
                 <div class="col-12 col-md-9">
                     <input type="text" id="text-input" value="{{$id->authorBook}}" name="authorBook" placeholder="Enter Author" class="form-control">
+                    @error('authorBook')
+                    <small class="help-block">{{$message}}</small>
+                    @enderror
                 </div>
             </div>
             <div class="row form-group">
@@ -61,6 +75,9 @@
                 </div>
                 <div class="col-12 col-md-9">
                     <input type="text" id="text-input" value="{{$id->priceBook}}" name="priceBook" placeholder="Enter Price" class="form-control">
+                    @error('priceBook')
+                    <small class="help-block">{{$message}}</small>
+                    @enderror
                 </div>
             </div>
             <div class="row form-group">
@@ -69,15 +86,18 @@
                 </div>
                 <div class="col-12 col-md-9">
                     <input type="file" id="file-input" value="{{$id->imgBook}}" name="imgBook" class="form-control-file">
+                    @error('imgBook')
+                    <small class="help-block">{{$message}}</small>
+                    @enderror
                 </div>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary btn-sm">
                     <i class="fa fa-dot-circle-o"></i> Submit
                 </button>
-                <button type="reset" class="btn btn-danger btn-sm">
+                {{-- <button type="reset" class="btn btn-danger btn-sm">
                     <i class="fa fa-ban"></i> Reset
-                </button>
+                </button> --}}
             </div>
         </form>
     </div>
