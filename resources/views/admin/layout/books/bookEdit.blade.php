@@ -8,7 +8,7 @@
 
     </div>
     <div class="card-body card-block">
-        <form action="{{route('admin.updatebook',$id)}}" method="POST" role='form' class="form-horizontal">
+        <form action="{{route('admin.updatebook',$id)}}" method="POST" role='form' enctype="multipart/form-data" class="form-horizontal">
             @csrf @method('PUT')
             <input type="hidden" name="idBook" value="{{$id->id}}">
             <div class="row form-group">

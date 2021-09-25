@@ -8,7 +8,7 @@
     </div>
     <div class="card-body card-block">
         <form action="{{route('admin.add')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
-           @csrf @method('PUT')
+           @csrf 
             <div class="row form-group">
                 <div class="col col-md-3">
                     <label for="text-input" class=" form-control-label">Name Book</label>
@@ -91,9 +91,6 @@
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary btn-sm">
                     <i class="fa fa-dot-circle-o"></i> Submit
-                </button>
-                <button type="reset" class="btn btn-danger btn-sm">
-                    <i class="fa fa-ban"></i> Reset
                 </button>
             </div>
         </form>

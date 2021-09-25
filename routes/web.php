@@ -20,6 +20,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/editbook/{id}','BookController@edit')->name('admin.editbook');
     Route::PUT('/updatebook/{id}','BookController@update')->name('admin.updatebook');
     Route::get('/addbook','BookController@add')->name('admin.addbook');
-    Route::PUT('/addbook','BookController@create')->name('admin.add');
+    Route::POST('/addbook','BookController@create')->name('admin.add');
     Route::DELETE('/deletebook/{id}','BookController@delete')->name('admin.deletebook');
 });

@@ -17,9 +17,9 @@ class Books extends Model
         'infoBook',
         'authorBook',
         'priceBook',
-        'imgBook',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'imgBook'
     ];
     public function admin()
     {
