@@ -12,15 +12,15 @@ class BookController extends Controller
     public function list()
     {
         $bookData = Books::orderBy('id','DESC')->search()->paginate(5);
-        return view('admin.layout.books.bookList', compact('bookData'));
+        return view('admin.layout.books.list', compact('bookData'));
     }
     public function edit(Books $id)
     {
-        return view('admin.layout.books.bookEdit', compact('id'));
+        return view('admin.layout.books.edit', compact('id'));
     }
     public function add()
     {
-        return view('admin.layout.books.bookAdd');
+        return view('admin.layout.books.add');
     }
     public function create(createRequest $request)
     {

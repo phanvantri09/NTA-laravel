@@ -21,10 +21,6 @@ class Books extends Model
         'updated_at',
         'imgBook'
     ];
-    public function admin()
-    {
-        return $this->hasOne(Admin::class);
-    }
     public function scopeSearch($queryData)
     {
         if($searchData = request()->search){
@@ -32,4 +28,17 @@ class Books extends Model
         }
         return $queryData;
     }
+    public function admin()
+    {
+        return $this->hasOne(Admin::class);
+    }  
+    public function cards()
+    {
+        return $this->hasMany(Cards::class, 'idBook','id');
+    }
+    public function users()
+    {
+        return $this->hasMany(Users::class);
+    }
+    
 }
