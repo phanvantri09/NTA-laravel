@@ -9,6 +9,11 @@ class HomeController extends Controller
     public function index()
     {
         $bookData = Books::orderBy('id','DESC')->search()->paginate(20);
-        return view('pages.card.list', compact('bookData'));
+        return view('pages.content.home', compact('bookData'));
+    }
+    public function card()
+    {
+        // $bookData = Books::orderBy('id','DESC')->search()->paginate(20);
+        return view('pages.content.card');
     }
 }

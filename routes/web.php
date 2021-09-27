@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/login','LoginController@login')->name('login');
+Route::get('/register','LoginController@register')->name('register');
 Route::prefix('admin')->group(function () {
     // route User
     Route::get('/listuser','AdminController@listUser')->name('admin.listUser');
@@ -28,5 +29,6 @@ Route::prefix('admin')->group(function () {
 });
 Route::prefix('bookshop')->group(function () {
     Route::get('/home','HomeController@index')->name('bookshop.home');
+    Route::get('/card','HomeController@card')->name('bookshop.card');
     
 });
