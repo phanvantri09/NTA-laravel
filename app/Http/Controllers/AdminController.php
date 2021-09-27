@@ -14,6 +14,7 @@ class AdminController extends Controller
         return view('admin.layout.user.userList', compact('userData'));
     }
     
+    
 
 }
     
