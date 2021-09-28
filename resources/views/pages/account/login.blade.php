@@ -47,18 +47,35 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            @if(Session::has('success'))
+                                <div class="alert alert-success">
+                                    <strong>Success!</strong> {{Session::get('success')}}
+                                </div>
+                            @endif 
+                            @if(Session::has('error'))
+                                <div class="alert alert-danger">
+                                    <strong>Error!</strong> {{Session::get('error')}}
+                                </div> 
+                            @endif
+                            <form action="{{route('bookShop.postLogin')}}" method="POST">
+                                @csrf
                                 <div class="form-group">
+                                    @error('email')
+                                        <small class="help-block">{{$message}}</small>
+                                    @enderror
                                     <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="text" name="email" placeholder="Email">
+                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
+                                    @error('password')
+                                        <small class="help-block">{{$message}}</small>
+                                    @enderror
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
                                 </div>
                                 <div class="login-checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember">Remember Me
+                                        <input type="checkbox" name="rememberMe">Remember Me
                                     </label>
                                     <label>
                                         <a href="#">Forgotten Password?</a>
@@ -75,7 +92,7 @@
                             <div class="register-link">
                                 <p>
                                     Don't you have account?
-                                    <a href="#">Sign Up Here</a>
+                                    <a href="{{route('bookShop.register')}}">Sign Up Here</a>
                                 </p>
                             </div>
                         </div>

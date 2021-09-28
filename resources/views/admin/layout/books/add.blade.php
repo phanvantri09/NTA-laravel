@@ -4,7 +4,7 @@
 
 <div class="card">
     <div class="card-header">
-        <strong>Basic Form</strong> Elements
+        <strong>Add Books</strong> Elements
     </div>
     <div class="card-body card-block">
         <form action="{{route('admin.add')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">

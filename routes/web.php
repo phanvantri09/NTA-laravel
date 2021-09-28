@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/login','UserController@login')->name('bookShop.login');
 Route::get('/register','UserController@register')->name('bookShop.register');
-Route::POST('/login','UserController@postLogin')->name('bookShop.postLogin');;
+Route::POST('/login','UserController@postLogin')->name('bookShop.postLogin');
 Route::POST('/register','UserController@postRegister')->name('bookShop.postRegister');
 Route::prefix('admin')->group(function () {
     // route User

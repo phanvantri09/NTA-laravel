@@ -1,44 +1,73 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Models\Users;
+
 use App\Http\Requests\User\createRequest;
 use App\Http\Requests\User\updateRequest;
+use App\Http\Requests\Login\attemptUser;
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     
-    public function List(){
+    public function List()
+    {
         //$data = Admin::all();
         return view('admin.layout.userList');
     }
-    public function Edit(){
+    public function Edit()
+    {
         $data = Users::all();
         return view('admin.layout.userList');
     }
-    public function login(){
+    public function login()
+    {
         return view('pages.account.login');
     }
-    public function postLogin(){
-        $data = Users::all();
-        return view('pages.account.login');
+    public function postLogin(attemptUser $request)
+    {
+        //dd($request->all());
+        $rememberMe = $request->has('rememberMe') ? TRUE : FALSE;
+        //dd($rememberMe);
+        $dataUser =[
+            'email'=>$request->email,
+            'password'=>$request->password
+        ];
+        if (Auth::attempt($dataUser))
+        {
+            dd("oke");
+            // $user = User::where(["email" => $request->email])->first();
+            // Auth::login($user, $rememberMe);
+            // return redirect()->route('bookShop.home')->with('success','Successfully Register, You can login!');
+        }else
+        {
+            dd(Auth::attempt($dataUser));
+            dd($request->all());
+            return redirect()->route('bookShop.login')->with('error','Error Register, Again!');
+        }
     }
-    public function register(){
+    public function register()
+    {
         return view('pages.account.register');
     }
-    public function postRegister(createRequest $request){
+    public function postRegister(createRequest $request)
+    {
         //bcrypt('JohnDoe');
         if(Users::create([
             'userName'=>$request->userName,
             'email'=>$request->email,
-            'password'=>$request->password,
+            'password'=>md5($request->password),
             'numberPhone'=>$request->numberPhone,
-            'addresss'=>$request->addresss,
+            'address'=>$request->address,
         ]))
         {
-            return redirect()->route('bookShop.login');
+            return redirect()->route('bookShop.login')->with('success','Successfully Register, You can login!');
+        }else
+        {
+            return redirect()->route('bookShop.register')->with('error','Error Register, Again!');
         }
+        
     }
 }

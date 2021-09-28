@@ -49,7 +49,17 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="{{route('bookShop.postRegister')}}" method="POST">
+                            @if(Session::has('success'))
+                                <div class="alert alert-success">
+                                    <strong>Success!</strong> {{Session::get('success')}}
+                                </div>
+                            @endif 
+                            @if(Session::has('error'))
+                                <div class="alert alert-danger">
+                                    <strong>Error!</strong> {{Session::get('error')}}
+                                </div> 
+                            @endif
+                            <form action="{{route('bookShop.postRegister')}}" enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label>Username</label>
@@ -80,7 +90,7 @@
                                     <input class="au-input au-input--full" type="text" name="numberPhone" placeholder="Number Phone">
                                 </div>
                                 <div class="form-group">
-                                    <label>Address</label>
+                                    <label>Address: Tỉnh - Huyện - Thành Phố</label>
                                     @error('address')
                                         <small class="help-block">{{$message}}</small>
                                     @enderror
