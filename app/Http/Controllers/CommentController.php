@@ -11,13 +11,13 @@ class CommentController extends Controller
     public function create(createRequest $request , $idBook)
     {
         if(Comment::create([
-            'nameUser'=>Auth::user()->userName,
-            'idBook'=>$idBook,
-            'idUser'=>$Auth::user()->id,
-            'content'=>$request->content
+            'userName'=> Auth::user()->userName,
+            'idBook'=> $idBook,
+            'idUser'=> Auth::user()->id,
+            'content'=> $request->content
         ]))
         {
-            return redirect()->route('bookShop.book')->with('success','successfully Add.');
+            return redirect()->route('bookShop.home')->with('success','successfully Add.');
         }
     }
 }

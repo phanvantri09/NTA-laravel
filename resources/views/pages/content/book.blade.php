@@ -40,15 +40,17 @@
                         </div>
                         <div class="col-12">
                             <div class="comments">
-                                <h3 class="comment-title">Comments (3)</h3>
+                                <h3 class="comment-title">Comments ()</h3>
                                 <!-- Single Comment -->
+                                @foreach ($commentData as $comment)
                                 <div class="single-comment">
                                     <img src="https://via.placeholder.com/80x80" alt="#">
                                     <div class="content">
-                                        <h4>Alisa harm <span>At 8:59 pm On Feb 28, 2018</span></h4>
-                                        <p>Enthusiastically leverage existing premium quality vectors with enterprise-wide innovation collaboration Phosfluorescently leverage others enterprisee  Phosfluorescently leverage.</p>
+                                        <h4>{{$comment->userName}} <span>At {{$comment->created_at}}</span></h4>
+                                        <p>{{$comment->content}}</p>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>									
                         </div>											
                         <div class="col-12">			
@@ -57,7 +59,7 @@
                                     <h2 class="reply-title">Leave a Comment</h2>
                                     <!-- Comment Form -->
                                     <form class="form" action="{{route('bookShop.postComment', $book->id)}}"  method="POST" enctype="multipart/form-data">
-                                        @csrf
+                                        @csrf @method('PUT')
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
