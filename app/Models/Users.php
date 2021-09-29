@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Users extends Model
 {
     use HasFactory;
-    public $table ='users'; 
+    public $table ='user'; 
     protected $fillable=[
         'userName',
         'password',
@@ -42,5 +42,9 @@ class Users extends Model
     public function bills()
     {
         return $this->hasMany(Bills::class);
+    }
+    public function comment()
+    {
+        return $this->hasOne(Comment::class);
     }
 }

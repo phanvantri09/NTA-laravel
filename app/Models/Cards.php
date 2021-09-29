@@ -12,6 +12,7 @@ class Cards extends Model
     protected $fillable=[
         'idUser',
         'idBook',
+        'amountCard',
         'conditionCard',
         'created_at',
         'updated_at'

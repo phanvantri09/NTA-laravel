@@ -65,10 +65,19 @@
 						<!-- Top Right -->
 						<div class="right-content">
 							<ul class="list-main">
+								@auth
 								<li><i class="ti-location-pin"></i> Store location</li>
 								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
-								<li><i class="ti-user"></i> <a href="#">My account</a></li>
-								<li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
+								<li><i class="ti-user"></i> <a href="#">{{Auth::user()->userName}}</a></li>
+								<li><i><</i><a href="{{route('bookShop.logout')}}">Logout</a></li>
+								@else
+								<li><i class="ti-location-pin"></i> Store location</li>
+								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
+								<li><i class="ti-user"></i> <a href="#">My account</a></li></a></li>
+								<li><i class="ti-power-off"></i><a href="{{route('bookShop.login')}}">Login</a></li>
+								@endauth 
+								
+								
 							</ul>
 						</div>
 						<!-- End Top Right -->
@@ -135,23 +144,29 @@
 										<a href="#">View Cart</a>
 									</div>
 									<ul class="shopping-list">
-										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Ring</a></h4>
-											<p class="quantity">1x - <span class="amount">$99.00</span></p>
-										</li>
-										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Necklace</a></h4>
-											<p class="quantity">1x - <span class="amount">$35.00</span></p>
-										</li>
+										@foreach ($cardData as $card)
+											@if ($card->idUser == Auth::user()->id && $card->conditionCard ==1 )
+												@foreach ($bookData as $book)
+													@if ($book->id == $card->idBook)
+													{{$sumPriceCard = $sumPriceCard + $book->priceBook }}
+													<li>
+														<a href="{{route('bookShop.deleteCard', $card->id)}}" class="remove btnDelete" title="Remove this item"><i class="fa fa-remove"></i></a>
+														<a class="cart-img" href="#"><img src="{{ asset("/imgUploads/$book->imgBook")}}" alt="#"></a>
+														<h4><a href="#">{{$book->nameBook}}</a></h4>
+														<p class="quantity">1x - <span class="amount">${{$book->priceBook}}</span></p>
+													</li>
+													@endif												
+												@endforeach
+											@endif
+										@endforeach
+										<form method="POST" action="" id="formDelete">
+											@csrf @method('DELETE')
+										</form>
 									</ul>
 									<div class="bottom">
 										<div class="total">
 											<span>Total</span>
-											<span class="total-amount">$134.00</span>
+											<span class="total-amount">${{$sumPriceCard}}</span>
 										</div>
 										<a href="checkout.html" class="btn animate">Checkout</a>
 									</div>
@@ -168,74 +183,6 @@
 			<div class="container">
 				<div class="cat-nav-head">
 					<div class="row">
-						<div class="col-lg-3">
-							<div class="all-category">
-								<h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
-								<ul class="main-category">
-									<li><a href="#">New Arrivals <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-										<ul class="sub-category">
-											<li><a href="#">accessories</a></li>
-											<li><a href="#">best selling</a></li>
-											<li><a href="#">top 100 offer</a></li>
-											<li><a href="#">sunglass</a></li>
-											<li><a href="#">watch</a></li>
-											<li><a href="#">man’s product</a></li>
-											<li><a href="#">ladies</a></li>
-											<li><a href="#">westrn dress</a></li>
-											<li><a href="#">denim </a></li>
-										</ul>
-									</li>
-									<li class="main-mega"><a href="#">best selling <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-										<ul class="mega-menu">
-											<li class="single-menu">
-												<a href="#" class="title-link">Shop Kid's</a>
-												<div class="image">
-													<img src="https://via.placeholder.com/225x155" alt="#">
-												</div>
-												<div class="inner-link">
-													<a href="#">Kids Toys</a>
-													<a href="#">Kids Travel Car</a>
-													<a href="#">Kids Color Shape</a>
-													<a href="#">Kids Tent</a>
-												</div>
-											</li>
-											<li class="single-menu">
-												<a href="#" class="title-link">Shop Men's</a>
-												<div class="image">
-													<img src="https://via.placeholder.com/225x155" alt="#">
-												</div>
-												<div class="inner-link">
-													<a href="#">Watch</a>
-													<a href="#">T-shirt</a>
-													<a href="#">Hoodies</a>
-													<a href="#">Formal Pant</a>
-												</div>
-											</li>
-											<li class="single-menu">
-												<a href="#" class="title-link">Shop Women's</a>
-												<div class="image">
-													<img src="https://via.placeholder.com/225x155" alt="#">
-												</div>
-												<div class="inner-link">
-													<a href="#">Ladies Shirt</a>
-													<a href="#">Ladies Frog</a>
-													<a href="#">Ladies Sun Glass</a>
-													<a href="#">Ladies Watch</a>
-												</div>
-											</li>
-										</ul>
-									</li>
-									<li><a href="#">accessories</a></li>
-									<li><a href="#">top 100 offer</a></li>
-									<li><a href="#">sunglass</a></li>
-									<li><a href="#">watch</a></li>
-									<li><a href="#">man’s product</a></li>
-									<li><a href="#">ladies</a></li>
-									<li><a href="#">westrn dress</a></li>
-									<li><a href="#">denim </a></li>
-								</ul>
-							</div>
-						</div>
 						<div class="col-lg-9 col-12">
 							<div class="menu-area">
 								<!-- Main Menu -->
@@ -379,5 +326,6 @@
 	<script src="{{ asset('/viewhome/js/easing.js')}}"></script>
 	<!-- Active JS -->
 	<script src="{{ asset('/viewhome/js/active.js')}}"></script>
+	<script src="{{ asset('/viewAdmin/js/action.js')}}"></script>
 </body>
 </html>

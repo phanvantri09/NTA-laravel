@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Comment;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,21 +24,13 @@ class createRequest extends FormRequest
     public function rules()
     {
         return [
-            'userName'=>'required',
-            'password'=>'required|min:6',
-            'email'=>'required|email|unique:user',
-            'address'=>'required',
-            'numberPhone'=>'required',
+            'content'=>'required|min:5'
         ];
     }
     public function messages()
     {
         return [
-            'userName.required'=>'no empty',
-            'password.required'=>'no empty',
-            'email.required'=>'no empty',
-            'address.required'=>'no empty',
-            'numberPhone.required'=>'no empty'
+            'content.required'=>'no empty'
         ];
     }
 }

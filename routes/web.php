@@ -12,8 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//em hơi dở tiếng anh nên em comment bằng tiếng việt nha máy anh
 Route::get('/login','UserController@login')->name('bookShop.login');
 Route::get('/register','UserController@register')->name('bookShop.register');
+Route::get('/logout','UserController@logout')->name('bookShop.logout');
 Route::POST('/login','UserController@postLogin')->name('bookShop.postLogin');
 Route::POST('/register','UserController@postRegister')->name('bookShop.postRegister');
 Route::prefix('admin')->group(function () {
@@ -29,8 +31,11 @@ Route::prefix('admin')->group(function () {
     Route::DELETE('/deletebook/{id}','BookController@delete')->name('admin.deletebook');
 
 });
+//route trang chủ
 Route::prefix('bookshop')->group(function () {
-    Route::get('/home','HomeController@index')->name('bookshop.home');
-    Route::get('/card','HomeController@card')->name('bookshop.card');
-    
+    Route::get('/home','HomeController@index')->name('bookShop.home');
+    Route::get('/book/{id}','HomeController@book')->name('bookShop.book'); 
+    Route::get('/addcard/{idUser}/{idBook}','CardController@addCard')->name('bookShop.addCard');
+    Route::POST('/postComment/{idBook}','CommentController@create')->name('bookShop.postComment');
+    Route::DELETE('/deletecard/{id}','CardController@delete')->name('bookShop.deleteCard');
 });

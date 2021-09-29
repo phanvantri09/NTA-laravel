@@ -29,6 +29,7 @@ class BookController extends Controller
             $imgBook = $request->imgBook;
             $extension = $request->imgBook->extension();
             $imgBookName = time().'-Book.'.$extension;
+            $imgBook->move(public_path('imgUploads'), $imgBookName);
         }
         $request->imgBook = $imgBookName;
         if(Books::create([

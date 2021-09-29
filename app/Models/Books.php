@@ -40,5 +40,9 @@ class Books extends Model
     {
         return $this->hasMany(Users::class);
     }
+    public function comment()
+    {
+        return $this->hasOneMany(Comment::class);
+    }
     
 }

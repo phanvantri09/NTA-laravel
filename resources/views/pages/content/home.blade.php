@@ -33,7 +33,7 @@
                                     <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                                         <div class="single-product">
                                             <div class="product-img">
-                                                <a href="product-details.html">
+                                                <a href="{{route('bookShop.book', $book->id)}}">
                                                     <img class="default-img" src="{{ asset("/imgUploads/$book->imgBook")}}" alt="#">
                                                     <img class="hover-img" src="{{ asset("/imgUploads/$book->imgBook")}}" alt="#">
                                                 </a>
@@ -44,7 +44,7 @@
                                                         <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
                                                     </div>
                                                     <div class="product-action-2">
-                                                        <a title="Add to cart" href="#">Add to cart</a>
+                                                        <a title="Add to cart" href="{{route('bookShop.addCard', [Auth::user()->id, $book->id])}}">Add to cart</a>
                                                     </div>
                                                 </div>
                                             </div>
