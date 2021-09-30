@@ -1,21 +1,5 @@
 @extends('pages.index')
-@section('content')
-<div class="breadcrumbs">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="bread-inner">
-                    <ul class="bread-list">
-                        <li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-                        <li class="active"><a href="blog-single.html">Cart</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Breadcrumbs -->
-        
+@section('content')        
 <!-- Shopping Cart -->
 <div class="shopping-cart section">
     <div class="container">
@@ -63,15 +47,12 @@
                                             <!--/ End Input Order -->
                                         </td>
                                         <td class="total-amount" data-title="Total"><span>${{$card->amountCard * $book->priceBook}} VND</span></td>
-                                        <td class="action" data-title="Remove"><a href="{{route('bookShop.deleteCard', $card->id)}}"><i class="ti-trash remove-icon"></i></a></td>
+                                        <td class="action" data-title="Remove"><a class="btnDelete" href="{{route('bookShop.deleteCard', $card->id)}}"><i class="ti-trash remove-icon"></i></a></td>
                                     </tr>
                                     @endif												
 								@endforeach
 							@endif
                         @endforeach
-                        <form method="POST" action="" id="formDelete">
-                            @csrf @method('DELETE')
-                        </form>
                     </tbody>
                 </table>
                 <!--/ End Shopping Summery -->

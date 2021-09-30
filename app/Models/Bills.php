@@ -10,7 +10,11 @@ class Bills extends Model
     use HasFactory;
     protected $table ='bills';
     protected $fillable=[
-        'idCard',
+        'idUser',
+        'userName',
+        'email',
+        'numberPhone',
+        'address',
         'priceBill',
         'created_at',
         'updated_at'

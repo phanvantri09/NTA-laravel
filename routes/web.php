@@ -35,6 +35,7 @@ Route::prefix('admin')->group(function () {
 Route::prefix('bookshop')->group(function () {
     Route::get('/home','HomeController@index')->name('bookShop.home');
     Route::get('/checkout','HomeController@checkout')->name('bookShop.checkout');
+    Route::PUT('/postcheckout/{sumPriceCard}','HomeController@postCheckout')->name('bookShop.postCheckout');
     Route::get('/card','HomeController@card')->name('bookShop.card'); 
     Route::get('/book/{id}','HomeController@book')->name('bookShop.book');
     Route::get('/addcard/{idUser}/{idBook}','CardController@addCard')->name('bookShop.addCard');

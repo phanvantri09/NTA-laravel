@@ -55,8 +55,8 @@
 						<!-- Top Left -->
 						<div class="top-left">
 							<ul class="list-main">
-								<li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
-								<li><i class="ti-email"></i> support@shophub.com</li>
+								<li><i class="ti-headphone-alt"></i>(84) + 37 286 8775</li>
+								<li><i class="ti-email"></i> pvtri.18it5@gmail.com</li>
 							</ul>
 						</div>
 						<!--/ End Top Left -->
@@ -136,11 +136,11 @@
 								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 							</div>
 							<div class="sinlge-bar shopping">
-								<a href="{{route('bookShop.card')}}" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+								<a href="{{route('bookShop.card')}}" class="single-icon"><i class="ti-bag"></i> <span class="total-count"></span></a>
 								<!-- Shopping Item -->
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
-										<span>2 Items</span>
+										<span>Items</span>
 										<a href="#">View Cart</a>
 									</div>
 									<ul class="shopping-list">
@@ -190,7 +190,7 @@
 									<div class="navbar-collapse">	
 										<div class="nav-inner">	
 											<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="#">Home</a></li>
+													<li class="active"><a href="{{route('bookShop.home')}}">Home</a></li>
 													<li><a href="#">Product</a></li>												
 													<li><a href="#">Service</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
