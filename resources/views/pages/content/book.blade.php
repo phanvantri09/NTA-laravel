@@ -43,13 +43,15 @@
                                 <h3 class="comment-title">Comments ()</h3>
                                 <!-- Single Comment -->
                                 @foreach ($commentData as $comment)
-                                <div class="single-comment">
-                                    <img src="https://via.placeholder.com/80x80" alt="#">
-                                    <div class="content">
-                                        <h4>{{$comment->userName}} <span>At {{$comment->created_at}}</span></h4>
-                                        <p>{{$comment->content}}</p>
+                                    @if ($comment->idBook == $book->id)
+                                    <div class="single-comment">
+                                        <img src="https://via.placeholder.com/80x80" alt="#">
+                                        <div class="content">
+                                            <h4>{{$comment->userName}} <span>At {{$comment->created_at}}</span></h4>
+                                            <p>{{$comment->content}}</p>
+                                        </div>
                                     </div>
-                                </div>
+                                    @endif
                                 @endforeach
                             </div>									
                         </div>											

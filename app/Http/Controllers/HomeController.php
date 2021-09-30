@@ -34,4 +34,12 @@ class HomeController extends Controller
         // $bookData = Books::orderBy('id','DESC')->search()->paginate(20);
         return view('pages.content.card', compact(['bookData','cardData','sumPriceCard']));
     }
+    public function checkout()
+    {
+        $bookData = Books::all();
+        $cardData = Cards::all();
+        $sumPriceCard = 0;
+        // $bookData = Books::orderBy('id','DESC')->search()->paginate(20);
+        return view('pages.content.checkout', compact(['bookData','cardData','sumPriceCard']));
+    }
 }

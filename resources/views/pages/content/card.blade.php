@@ -34,84 +34,44 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
-                            <td class="product-des" data-title="Description">
-                                <p class="product-name"><a href="#">Women Dress</a></p>
-                                <p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
-                            </td>
-                            <td class="price" data-title="Price"><span>$110.00 </span></td>
-                            <td class="qty" data-title="Qty"><!-- Input Order -->
-                                <div class="input-group">
-                                    <div class="button minus">
-                                        <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                            <i class="ti-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="100" value="1">
-                                    <div class="button plus">
-                                        <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
-                                            <i class="ti-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!--/ End Input Order -->
-                            </td>
-                            <td class="total-amount" data-title="Total"><span>$220.88</span></td>
-                            <td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
-                            <td class="product-des" data-title="Description">
-                                <p class="product-name"><a href="#">Women Dress</a></p>
-                                <p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
-                            </td>
-                            <td class="price" data-title="Price"><span>$110.00 </span></td>
-                            <td class="qty" data-title="Qty"><!-- Input Order -->
-                                <div class="input-group">
-                                    <div class="button minus">
-                                        <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[2]">
-                                            <i class="ti-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" name="quant[2]" class="input-number"  data-min="1" data-max="100" value="2">
-                                    <div class="button plus">
-                                        <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[2]">
-                                            <i class="ti-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!--/ End Input Order -->
-                            </td>
-                            <td class="total-amount" data-title="Total"><span>$220.88</span></td>
-                            <td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
-                            <td class="product-des" data-title="Description">
-                                <p class="product-name"><a href="#">Women Dress</a></p>
-                                <p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
-                            </td>
-                            <td class="price" data-title="Price"><span>$110.00 </span></td>
-                            <td class="qty" data-title="Qty"><!-- Input Order -->
-                                <div class="input-group">
-                                    <div class="button minus">
-                                        <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[3]">
-                                            <i class="ti-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" name="quant[3]" class="input-number"  data-min="1" data-max="100" value="3">
-                                    <div class="button plus">
-                                        <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[3]">
-                                            <i class="ti-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!--/ End Input Order -->
-                            </td>
-                            <td class="total-amount" data-title="Total"><span>$220.88</span></td>
-                            <td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
-                        </tr>
+                        @foreach ($cardData as $card)
+                            @if ($card->idUser == Auth::user()->id && $card->conditionCard ==1 )
+                                @foreach ($bookData as $book)
+                                    @if ($book->id == $card->idBook)	
+                                    <input type="hidden" value="{{$sumPriceCard = $sumPriceCard +($book->priceBook * $card->amountCard) }}">									
+                                    <tr>
+                                        <td class="image" data-title="No"><img src="{{ asset("/imgUploads/$book->imgBook")}}" alt="#"></td>
+                                        <td class="product-des" data-title="Description">
+                                            <p class="product-name"><a href="#">{{$book->nameBook}}</a></p>
+                                            {{-- <p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p> --}}
+                                        </td>
+                                        <td class="price" data-title="Price"><span>${{$book->priceBook}} VND </span></td>
+                                        <td class="qty" data-title="Qty"><!-- Input Order -->
+                                            <div class="input-group">
+                                                <div class="button minus">
+                                                    <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="amountCard">
+                                                        <i class="ti-minus"></i>
+                                                    </button>
+                                                </div>
+                                                <input type="text" name="amountCard" class="input-number"  data-min="1" data-max="100" value="{{$card->amountCard}}">
+                                                <div class="button plus">
+                                                    <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="amountCard">
+                                                        <i class="ti-plus"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!--/ End Input Order -->
+                                        </td>
+                                        <td class="total-amount" data-title="Total"><span>${{$card->amountCard * $book->priceBook}} VND</span></td>
+                                        <td class="action" data-title="Remove"><a href="{{route('bookShop.deleteCard', $card->id)}}"><i class="ti-trash remove-icon"></i></a></td>
+                                    </tr>
+                                    @endif												
+								@endforeach
+							@endif
+                        @endforeach
+                        <form method="POST" action="" id="formDelete">
+                            @csrf @method('DELETE')
+                        </form>
                     </tbody>
                 </table>
                 <!--/ End Shopping Summery -->
@@ -138,14 +98,13 @@
                         <div class="col-lg-4 col-md-7 col-12">
                             <div class="right">
                                 <ul>
-                                    <li>Cart Subtotal<span>$330.00</span></li>
-                                    <li>Shipping<span>Free</span></li>
-                                    <li>You Save<span>$20.00</span></li>
-                                    <li class="last">You Pay<span>$310.00</span></li>
+                                    <li>Cart Subtotal<span>${{$sumPriceCard}} VND</span></li>
+                                    <li>Shipping<span>Free</span></li> 
+                                    <li class="last">You Pay<span>${{$sumPriceCard}} VND</span></li>
                                 </ul>
                                 <div class="button5">
-                                    <a href="#" class="btn">Checkout</a>
-                                    <a href="#" class="btn">Continue shopping</a>
+                                    <a href="{{route('bookShop.checkout')}}" class="btn">Checkout</a>
+                                    <a href="{{route('bookShop.home')}}" class="btn">Continue shopping</a>
                                 </div>
                             </div>
                         </div>

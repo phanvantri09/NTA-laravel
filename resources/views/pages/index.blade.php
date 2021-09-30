@@ -136,7 +136,7 @@
 								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 							</div>
 							<div class="sinlge-bar shopping">
-								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+								<a href="{{route('bookShop.card')}}" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
 								<!-- Shopping Item -->
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
@@ -148,12 +148,12 @@
 											@if ($card->idUser == Auth::user()->id && $card->conditionCard ==1 )
 												@foreach ($bookData as $book)
 													@if ($book->id == $card->idBook)
-													{{$sumPriceCard = $sumPriceCard + $book->priceBook }}
+													<input type="hidden" value="{{$sumPriceCard = $sumPriceCard +($book->priceBook * $card->amountCard)}}">
 													<li>
 														<a href="{{route('bookShop.deleteCard', $card->id)}}" class="remove btnDelete" title="Remove this item"><i class="fa fa-remove"></i></a>
 														<a class="cart-img" href="#"><img src="{{ asset("/imgUploads/$book->imgBook")}}" alt="#"></a>
 														<h4><a href="#">{{$book->nameBook}}</a></h4>
-														<p class="quantity">1x - <span class="amount">${{$book->priceBook}}</span></p>
+														<p class="quantity">{{$card->amountCard}}x - <span class="amount">${{($book->priceBook * $card->amountCard) }}</span></p>
 													</li>
 													@endif												
 												@endforeach
@@ -168,7 +168,7 @@
 											<span>Total</span>
 											<span class="total-amount">${{$sumPriceCard}}</span>
 										</div>
-										<a href="checkout.html" class="btn animate">Checkout</a>
+										<a href="{{route('bookShop.checkout')}}" class="btn animate">Checkout</a>
 									</div>
 								</div>
 								<!--/ End Shopping Item -->

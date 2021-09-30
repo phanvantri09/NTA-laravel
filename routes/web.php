@@ -34,7 +34,9 @@ Route::prefix('admin')->group(function () {
 //route trang chủ
 Route::prefix('bookshop')->group(function () {
     Route::get('/home','HomeController@index')->name('bookShop.home');
-    Route::get('/book/{id}','HomeController@book')->name('bookShop.book'); 
+    Route::get('/checkout','HomeController@checkout')->name('bookShop.checkout');
+    Route::get('/card','HomeController@card')->name('bookShop.card'); 
+    Route::get('/book/{id}','HomeController@book')->name('bookShop.book');
     Route::get('/addcard/{idUser}/{idBook}','CardController@addCard')->name('bookShop.addCard');
     Route::PUT('/postComment/{idBook}','CommentController@create')->name('bookShop.postComment');
     Route::DELETE('/deletecard/{id}','CardController@delete')->name('bookShop.deleteCard');
