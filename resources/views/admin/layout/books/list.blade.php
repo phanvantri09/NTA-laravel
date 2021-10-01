@@ -12,6 +12,7 @@
             <th>Infomation</th>
             <th>Author</th>
             <th>Price/1</th>
+            <th>Image</th>
             <th>Infomation</th>
             <th>Time Update</th>
             <th>Action</th>
@@ -26,7 +27,8 @@
             <td>{{$book->amountBook}}</td>
             <td>{{$book->infoBook}}</td>
             <td>{{$book->authorBook}}</td>
-            <td>{{$book->priceBook}}</td>      
+            <td>{{$book->priceBook}}</td>   
+            <td><img src="{{ asset("/imgUploads/$book->imgBook")}}" alt=""></td>           
             <td>
                 <span class="status--process">{{$book->created_at}}</span>
             </td>
@@ -35,10 +37,10 @@
             </td>
             <td>
                 <div class="table-data-feature">
-                    <a  href="{{route('admin.editbook',$book->id)}}" class="item btnEdit" data-toggle="tooltip" data-placement="top" title="Edit">
+                    <a  href="{{route('admin.editBook',$book->id)}}" class="item btnEdit" data-toggle="tooltip" data-placement="top" title="Edit">
                         <i class="zmdi zmdi-edit"></i>
                     </a>
-                    <a href="{{route('admin.deletebook',$book->id)}}" class="item btnDelete"  data-toggle="tooltip" data-placement="top" title="Delete">
+                    <a href="{{route('admin.deleteBook',$book->id)}}" class="item btnDelete"  data-toggle="tooltip" data-placement="top" title="Delete">
                         <i class="zmdi zmdi-delete"></i>
                     </a>
                 </div> 

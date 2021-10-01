@@ -42,18 +42,18 @@ class BookController extends Controller
             'imgBook'=>$request->imgBook
         ]))
         {
-            return redirect()->route('admin.listbook')->with('success','successfully Add.');
+            return redirect()->route('admin.listBook')->with('success','successfully Add.');
         }
     }
     public function delete(Books $id)
     {
         if($id->amountBook <= 0)
         {
-            return redirect()->route('admin.listbook')->with('error','Can not delete !');
+            return redirect()->route('admin.listBook')->with('error','Can not delete !');
         }else
         {
             $id->delete();
-            return redirect()->route('admin.listbook')->with('success','successfully  Delete');
+            return redirect()->route('admin.listBook')->with('success','successfully  Delete');
         }
     }
     public function update(updateRequest $request, Books  $id)
@@ -69,7 +69,7 @@ class BookController extends Controller
         // 'email' => 'required|email',
         //   'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
          $id->update($request->only('nameBook','amountBook','infoBook','genreBook','authorBook','priceBook','updated_at','imgBook'));
-         return redirect()->route('admin.listbook')->with('success',"Sửa thành công");
+         return redirect()->route('admin.listBook')->with('success',"Sửa thành công");
         //$id->update($request->all());
     }
 }

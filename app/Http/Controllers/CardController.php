@@ -11,7 +11,7 @@ class CardController extends Controller
     // 1 -> đã thêm vào giỏ chờ thanh toán
     // 2 -> đã thanh toán
     // 3 -> trả hàng
-    public function addCard($idUser, $idBook){
+    public function create($idUser, $idBook){
         $conditionCard = 1;
         $cardData = Cards::all();
         //dd($cardData);

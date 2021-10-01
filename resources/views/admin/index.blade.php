@@ -125,10 +125,10 @@
                                 <i class="fas fa-copy"></i>Manager Books</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="{{route('admin.listUser')}}">List Books</a>
+                                    <a href="{{route('admin.listBook')}}">List Books</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.addbook')}}">Add Books</a>
+                                    <a href="{{route('admin.addBook')}}">Add Books</a>
                                 </li>
                             </ul>
                         </li>

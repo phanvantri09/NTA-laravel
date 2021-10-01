@@ -75,9 +75,14 @@ class HomeController extends Controller
             {
                 if( ($card->idUser  ==  $idUser)   &&  ($card->conditionCard   ==  1))
                 {
+                    //update conditon card 
                     $cardRowUpdate = Cards::find($card->id);
                     $cardRowUpdate->conditionCard = 2;
                     $cardRowUpdate->save();
+                    //update amount Book
+                    $bookRowUpdate = Books::find($card->idBook);
+                    $bookRowUpdate->amountBook = $bookRowUpdate->amountBook - $card->amountCard;
+                    $bookRowUpdate->save();
                 }
             }
             //send mail
@@ -86,6 +91,7 @@ class HomeController extends Controller
                 'body'  =>  'Your order is packed, wait for delivery in the next few days, thank you for buying books at BookShop'
             ];
             Mail::to($emailUser)->send(new sendMail($details));
+
             return redirect()->route('bookShop.home')->with('success','Successfully Register, You can login!');
         }else
         {
