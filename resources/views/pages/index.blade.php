@@ -144,6 +144,7 @@
 										<a href="#">View Cart</a>
 									</div>
 									<ul class="shopping-list">
+										@auth
 										@foreach ($cardData as $card)
 											@if ($card->idUser == Auth::user()->id && $card->conditionCard ==1 )
 												@foreach ($bookData as $book)
@@ -162,6 +163,8 @@
 										<form method="POST" action="" id="formDelete">
 											@csrf @method('DELETE')
 										</form>
+										@endauth
+										
 									</ul>
 									<div class="bottom">
 										<div class="total">

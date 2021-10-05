@@ -43,9 +43,16 @@
                                                         <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
                                                         <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
                                                     </div>
+                                                    @auth
                                                     <div class="product-action-2">
                                                         <a title="Add to cart" href="{{route('bookShop.addCard', [Auth::user()->id, $book->id])}}">Add to cart</a>
                                                     </div>
+                                                    @else
+                                                    <div class="product-action-2">
+                                                        <a title="Add to cart" href="{{route('bookShop.login')}}">Add to cart</a>
+                                                    </div>
+                                                    @endauth
+
                                                 </div>
                                             </div>
                                             <div class="product-content">
